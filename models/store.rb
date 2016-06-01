@@ -3,21 +3,21 @@ class Store
   def initialize
     @bills = []
     @percent_discs = []
-    @fixed_disc = new FixedAmountDiscount()
+    @fixed_disc = FixedAmountDiscount.new
 
     create_percentage_discs
   end
 
   # Initializes the percentage based discounts
   def create_percentage_discs
-    @percent_discs << new EmployeeDiscount()
-    @percent_discs << new AffiliateDiscount()
-    @percent_discs << new LoyalCustomerDiscount()
+    @percent_discs << EmployeeDiscount.new
+    @percent_discs << AffiliateDiscount.new
+    @percent_discs << LoyalCustomerDiscount.new
   end
 
   # Creates a bill and updates the net payable of the bill
   def create_bill(user, items)
-    bill = new Bill(user, items)
+    bill = Bill.new(user, items)
     bill.update_net_payable(@percent_discs, @fixed_disc)
   end
 
