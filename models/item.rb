@@ -9,4 +9,8 @@ class Item
   def get_category
     @category
   end
+
+  def get_price
+    @price
+  end
 end

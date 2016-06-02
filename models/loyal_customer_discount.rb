@@ -11,10 +11,6 @@ class LoyalCustomerDiscount < PercentageDiscount
 
   def is_eligible(bill)
     latest_join_date = Date.today.prev_year(@min_duration_year)
-    return (bill.get_user.date_joined <= latest_join_date) ? true : false
-  end
-
-  def discount_amount(bill)
-    return sum_price_non_groceries(bill.get_items) * @discount
+    return (bill.get_user.get_date_joined <= latest_join_date) ? true : false
   end
 end

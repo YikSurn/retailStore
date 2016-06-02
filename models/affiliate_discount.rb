@@ -7,10 +7,6 @@ class AffiliateDiscount < PercentageDiscount
   end
 
   def is_eligible(bill)
-    return bill.get_user.type == :affiliate ? true : false
-  end
-
-  def discount_amount(bill)
-    return sum_price_non_groceries(bill.get_items) * @discount
+    return bill.get_user.get_type == :affiliate ? true : false
   end
 end
